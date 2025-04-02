@@ -1,0 +1,165 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body styling with black background and subtle green gradient */
+body {
+  background: linear-gradient(135deg, #000000, #003300);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00FF00; /* Green text for hacker feel */
+}
+
+/* Main App container with dark glass effect */
+.App {
+  background: linear-gradient(135deg, #000000, #003300);
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  backdrop-filter: blur(10px);
+  color: #00FF00; /* Green text */
+}
+
+/* Wallet button alignment */
+.wallet-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Title styling */
+h2 {
+  font-size: 1rem;
+  color: #00FF00;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00;
+}
+
+/* Section titles */
+h3 {
+  font-size: 0.9rem; /* Reduced font size */
+  color: #00FF00;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Container for each section */
+.input-group {
+  margin: 15px 0;
+}
+
+/* Input styling with dark mode effect */
+input {
+  width: 100%;
+  max-width: 180px;
+  padding: 8px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  font-size: 0.9rem; /* Slightly smaller input text */
+  background-color: #1a1a1a;
+  color: #00FF00;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #00FF00;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.2);
+}
+
+/* Button styling with neon green */
+button {
+  width: 100%;
+  max-width: 180px;
+  padding: 8px;
+  background: linear-gradient(90deg, #00FF00, #00cc00);
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem; /* Adjusted button text size */
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #00cc00, #00FF00);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 255, 0, 0.5);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background: #666666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Balance and Rewards text */
+.balance-info {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0, 255, 0, 0.1);
+  border-radius: 10px;
+  color: #00FF00;
+  font-weight: 600;
+}
+
+/* Text styling */
+p {
+  font-size: 0.85rem; /* Smaller text size */
+  color: #00FF00;
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .App {
+    max-width: 100%;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.4rem; /* Smaller title on mobile */
+  }
+
+  h3 {
+    font-size: 0.85rem; /* Smaller section titles on mobile */
+  }
+
+  input, button {
+    max-width: 160px;
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  p {
+    font-size: 0.8rem; /* Smaller text on mobile */
+  }
+
+  .balance-info {
+    padding: 10px;
+  }
+}
