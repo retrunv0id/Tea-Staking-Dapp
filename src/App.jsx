@@ -5,7 +5,7 @@ import { parseEther, formatEther } from 'viem'
 import './App.css'
 
 const STAKING_CONTRACT_ADDRESS = '0x10060b36670552c9c731586ca814fe0442dc5ff5'
-const RVD_TOKEN_ADDRESS = '0x757F5281Fc5821993D2281d50B808aF7365BaC02'
+const RVD_TOKEN_ADDRESS = '0x4dBe2E9bCefB065CbA4ffB212296AFD61e4395e5'
 
 const stakingABI = [
   {
