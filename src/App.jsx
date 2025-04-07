@@ -4,8 +4,8 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { parseEther, formatEther } from 'viem'
 import './App.css'
 
-const STAKING_CONTRACT_ADDRESS = '0x10060b36670552c9c731586ca814fe0442dc5ff5'
-const RVD_TOKEN_ADDRESS = '0x4dBe2E9bCefB065CbA4ffB212296AFD61e4395e5'
+const STAKING_CONTRACT_ADDRESS = '0x099266027516C9eD314178C5e1fB47179C5639BC'
+const RVD_TOKEN_ADDRESS = '0x92C269894Bfc2FcE1d530F1575dEf67945594040'
 
 const stakingABI = [
   {
@@ -18,6 +18,47 @@ const stakingABI = [
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
   },
   {
     "anonymous": false,
@@ -36,6 +77,25 @@ const stakingABI = [
       }
     ],
     "name": "RewardClaimed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardTokenDeposited",
     "type": "event"
   },
   {
@@ -79,6 +139,19 @@ const stakingABI = [
   {
     "inputs": [],
     "name": "claimReward",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "depositRewardTokens",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -138,6 +211,26 @@ const stakingABI = [
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -227,6 +320,19 @@ const stakingABI = [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "amount",
         "type": "uint256"
@@ -238,7 +344,6 @@ const stakingABI = [
     "type": "function"
   }
 ]
-
 function App() {
   const { address, isConnected } = useAccount()
   const [stakeAmount, setStakeAmount] = useState('')
